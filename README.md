@@ -15,4 +15,4 @@
 
 >## C/C++
 * 문법
-  * C문법
+  * [C문법](https://github.com/gpffh20/TIL/blob/master/c%20%EB%AC%B8%EB%B2%95.md#false%EB%8A%94-0)

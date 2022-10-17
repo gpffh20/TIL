@@ -16,3 +16,5 @@
 >## C/C++
 * 문법
   * [C문법](https://github.com/gpffh20/TIL/blob/master/C:C%2B%2B/c%20%EB%AC%B8%EB%B2%95.md)
+* 알고리즘
+  * [바킹독](https://github.com/gpffh20/TIL/tree/master/C:C%2B%2B/%EB%B0%94%ED%82%B9%EB%8F%85)

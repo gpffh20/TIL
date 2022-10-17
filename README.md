@@ -9,7 +9,7 @@
   * [(비공개) 코딩도장 Unit 10 ~ 18](https://github.com/gpffh20/TIL_private/blob/master/python_grammer/python2.md#python-%EB%AC%B8%EB%B2%95-02)
   * [(비공개) 코딩도장 Unit 19 ~ 24](https://github.com/gpffh20/TIL_private/blob/master/python_grammer/python3.md#python-%EB%AC%B8%EB%B2%95-03)
   * [(비공개) 코딩도장 Unit 25 ~ 31](https://github.com/gpffh20/TIL_private/blob/master/python_grammer/python4.md#python-%EB%AC%B8%EB%B2%95-04)
-* [지뢰찾기]
+* [지뢰찾기](https://github.com/gpffh20/TIL/blob/master/Python/minesweeper.py)
 
 <br/><br>
 

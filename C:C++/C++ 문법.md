@@ -1,9 +1,115 @@
 ## C++ 문법
 ---
 >### vector
+* 배열과 거의 동일한 기능 수행
+* '=' 사용시 deep copy 발생
 * C++에서 배열을 선언하려면 크기를 정해줘야하지만 vector는 늘렸다 줄였다 할 수 있다.
 * 함수의 인자로 사용할 시 복사본을 이용하는 개념이기 때문에 원본에 영향 주지 않는다.
->### cin/cout
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(void) {
+  vector<int> v1(3, 5); // {5,5,5};
+  cout << v1.size() << '\n'; // 3
+  v1.push_back(7); // {5,5,5,7};
+
+  vector<int> v2(2); // {0,0};
+  v2.insert(v2.begin()+1, 3); // {0,3,0};
+
+  vector<int> v3 = {1,2,3,4}; // {1,2,3,4}
+  v3.erase(v3.begin()+2); // {1,2,4};
+
+  vector<int> v4; // {}
+  v4 = v3; // {1,2,4}
+  cout << v4[0] << v4[1] << v4[2] << '\n';
+  v4.pop_back(); // {1,2}
+  v4.clear(); // {}
+}
+```
+* vector에 있는 모든 원소 순회
+```cpp
+vector<int> v1 = {1, 2, 3, 4, 5, 6};
+
+// 1. range-based for loop
+for(int e : v1) // e에 v1원소 하나씩 들어가는 for문
+  cout << e << ' ';
+for(int &e : v1) // 원본 수정 시에는 이렇게 써야함
+
+// 2. for
+for(int i = 0; i < v1.size(); i++)
+  cout << v1[i] << ' ';
+```
+>### -auto
+* '타입추론', '초기화 값에 따라 알아서 데이터 타입을 정해주는 키워드' 라고도 불린다.
+* auto 키워드는 선언한 변수나 람다식의 타입을 컴파일러에게 추론하도록 맡깁니다.
+```cpp
+//변수 선언
+auto a1 = 10;   // int 타입
+auto a2 = 10.0f;  // float 타입
+auto a3 = "c";  // char 타입
+auto a4 = "BlockDMask"; // string 타입
+auto a5 = {10, 20, 30};  //int 배열 타입
+```
+
+* for는 m의 각 원소에 대해 첫번째부터 마지막 원소까지 복사본을 v에 저장한뒤에 출력 한다는 의미이다.
+* 복사본을 따로 저장하고 싶지 않으면 &로 참조만 하면 됨
+```cpp
+
+for (auto v : m ) printf("%d\n", v->first);
+for (auto& v : arr
+ ```
+>### -string
+[관련 블로그](https://rebro.kr/53)
+
+>### -iterator(반복자)
+* 포인터와 거의 비슷하게 동작
+* .begin() : 순차열의 시작
+* .end() : 순차열의 끝
+
+>### 공백이 포함 된 문자열 출력
+* getline 함수 이용
+    * c++ string 형태의 자료에만 사용가능
+    ```cpp
+    string s;
+    getline(cin, s);
+    cout << s;
+    ```
+>### 네임스페이스
+* C++에서는 변수, 함수, 구조체, 클래스 등을 서로 구분하기 위해서 이름으로 사용되는 다양한 내부 식별자(identifier)를 가지고 있다. 하지만 프로그램이 커지면 내부 식별자 간에 충돌할 수 있다. 이러한 이름 충돌 문제를 C++에서는 네임스페이스(namespace)를 통해 해결하고 있다.
+
+<br/><br>
+
+>## 함수
+### -memset
+* 메모리의 내용을 원하는 크기만큼 특정 값으로 세팅할 수 있는 함수
+* 헤더: memory.h 또는 string.h
+* 오류날 가능성이 많아 추천은 안함
+```cpp
+memset(void* ptr, int value, size_t num);
+// void* ptr은 메모리의 시작 주소
+// value는 세팅하고자 하는 값, 문자 넣어도 상관없음.
+// 길이, sizeof(객체)로 많이 씀.
+int a[21];
+memset(a, 0, sizeof a);
+```
+### -fill
+* 메모리의 내용을 원하는 크기만큼 특정 값으로 세팅할 수 있는 함수
+* 헤더: algorithm
+```cpp
+void fill(ForwardIterator first, ForwardIterator last, contT&val);
+// first는 채우고자 하는 자료구조 시작위치 iterator
+// last는 채우고자 하는 자료구조 끝 위치, last는 불포함
+// val은 first부터 last전까지 채우고자 하는 값
+int a[21];
+int b[21][21];  // 2차원 배열
+fill(a, a+21, 0);
+for(int i = 0; i < 21; i++)
+  fill(b[i], b[i]+21, 0);
+```
+
+### -cin/cout
 * 사용 방법
     ```cpp
     #include <iostream>
@@ -24,15 +130,12 @@
     ```cpp
     cin.tie(0);
     ```
-
->### 공백이 포함 된 문자열 출력
-* getline 함수 이용
-    * c++ string 형태의 자료에만 사용가능
-    ```cpp
-    string s;
-    getline(cin, s);
-    cout << s;
-    ```
->### 네임스페이스
-* C++에서는 변수, 함수, 구조체, 클래스 등을 서로 구분하기 위해서 이름으로 사용되는 다양한 내부 식별자(identifier)를 가지고 있다. 하지만 프로그램이 커지면 내부 식별자 간에 충돌할 수 있다. 이러한 이름 충돌 문제를 C++에서는 네임스페이스(namespace)를 통해 해결하고 있다.
-* 
+### -min/max
+```cpp
+// a, b중 작은거 출력
+min(a, b);
+min({a, b, c, d});
+// a, b중 큰거 출력
+max(a, b);
+max({a, b, c, d});
+```

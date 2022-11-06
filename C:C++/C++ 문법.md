@@ -58,6 +58,7 @@ auto a5 = {10, 20, 30};  //int 배열 타입
 ```cpp
 
 for (auto v : m ) printf("%d\n", v->first);
+// for(a : b)는 자료형 관계 없이 같은 기능을 함.
 for (auto& v : arr
  ```
 >### -string
@@ -78,6 +79,15 @@ for (auto& v : arr
     ```
 >### 네임스페이스
 * C++에서는 변수, 함수, 구조체, 클래스 등을 서로 구분하기 위해서 이름으로 사용되는 다양한 내부 식별자(identifier)를 가지고 있다. 하지만 프로그램이 커지면 내부 식별자 간에 충돌할 수 있다. 이러한 이름 충돌 문제를 C++에서는 네임스페이스(namespace)를 통해 해결하고 있다.
+
+>### bool
+* boolean을 의미
+* 값으로 true와 false만 가짐
+* flag와 유사하다고 생각하면 편할 듯
+```cpp
+bool tr = true; // 1
+bool fa = false;  // 0
+```
 
 <br/><br>
 
@@ -139,3 +149,27 @@ min({a, b, c, d});
 max(a, b);
 max({a, b, c, d});
 ```
+### -sort
+```cpp
+#include <algorithm>
+// 오름차순 정렬
+int arr[5] = {5, 2, 1, 9, 3};
+sort(arr, arr + 5);
+
+//내림차순 정렬
+bool compare(int a, int b)
+{
+  return a > b;
+}
+ int main()
+ {
+  int arr[5] = {5, 2, 1, 9, 3};
+  sort(arr, arr + 5, compare);
+ }
+ ```
+
+ ### -swap
+ ```cpp
+ swap(a, b);  // a와 b의 값 swap
+ swap(arr[a], arr[a+10]); // arr배열의 a변째 인덱스 부터 a+10 인덱스 까지 swap
+ ```

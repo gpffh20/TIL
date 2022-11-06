@@ -173,3 +173,9 @@ bool compare(int a, int b)
  swap(a, b);  // a와 b의 값 swap
  swap(arr[a], arr[a+10]); // arr배열의 a변째 인덱스 부터 a+10 인덱스 까지 swap
  ```
+### -abs
+* 절댓값
+```cpp
+abs(-100);
+100
+```

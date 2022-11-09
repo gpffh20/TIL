@@ -88,6 +88,45 @@ for (auto& v : arr
 bool tr = true; // 1
 bool fa = false;  // 0
 ```
+>### 구조체
+* 하나 이상의 변수를 그룹 지어서 새로운 자료형을 정의
+* 더미 노드란, 데이터 저장을 위한 노드가 아니라 노드의 추가/삭제 구현의 간편성을 위해 사용하는 노드이다. 실제 데이터를 저장하는 다른 노드를 가리키는 포인터의 역할만을 수행한다
+```cpp
+struct Employee   // Employee라는 구조체 형성
+{
+  short id;
+  int age;
+  double wage;
+
+  Emloyee joe{1, 32, 6000.0};   // 초기화
+
+  Employee joe;   //변수 joe는 Employee타입.
+  joe.id = 14;
+  joe.age = 32;
+  joe.wage = 24.15;
+}
+```
+### STL List
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(void)
+{
+  list<int> L = {1,2}; // 1 2
+  list<int>::iterator t = L.begin(); // t는 1을 가리키는 중, iterator가 번지 역할을 함, iterator t 대신 auto t 사용 가능
+  L.push_front(10); // 10 1 2
+  cout << *t << '\n'; // t가 가리키는 값 = 1을 출력
+  L.push_back(5); // 10 1 2 5
+  L.insert(t, 6); // t가 가리키는 곳 앞에 6을 삽입, 10 6 1 2 5
+  t++; // t를 1칸 앞으로 전진, 현재 t가 가리키는 값은 2
+  t = L.erase(t); // t가 가리키는 값을 제거, 그 다음 원소인 5의 위치를 반환
+                  // 10 6 1 5, t가 가리키는 값은 5
+  cout << *t << '\n'; // 5
+  for(auto i : L) cout << i << ' ';
+  cout << '\n';
+}
+```
 
 <br/><br>
 

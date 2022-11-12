@@ -123,10 +123,27 @@ int main(void)
   t = L.erase(t); // t가 가리키는 값을 제거, 그 다음 원소인 5의 위치를 반환
                   // 10 6 1 5, t가 가리키는 값은 5
   cout << *t << '\n'; // 5
-  for(auto i : L) cout << i << '  ';
+  for(auto i : L) cout << i << ' ';
   cout << '\n';
 }
 ```
+### 삼항연산자
+```cpp
+res = (A < B) ? A : B;
+
+if(A < B)
+  res = A;
+else
+  res = B;
+
+// 두 식의 결과는 같다
+```
+### size_t형
+* unsigned int와 같다
+* typedef unsigned int size_t;가 풀네임이다
+* size_t는 32비트 운영체제에서 "부호 없는 32비트 정수", 64비트 운영체제에서 "부호없는 64비트 정수"다
+* unsigned int는 64비트 운영체제에서 여전히 32비트 일 수 있다
+* 메모리나 문자열 등의 길이를 구할 때에는 size_t형으로 반환된다
 
 <br/><br>
 

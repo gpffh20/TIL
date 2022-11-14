@@ -106,7 +106,7 @@ struct Employee   // Employee라는 구조체 형성
   joe.wage = 24.15;
 }
 ```
-### STL List
+>### STL List
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -127,7 +127,7 @@ int main(void)
   cout << '\n';
 }
 ```
-### 삼항연산자
+>### 삼항연산자
 ```cpp
 res = (A < B) ? A : B;
 
@@ -138,12 +138,41 @@ else
 
 // 두 식의 결과는 같다
 ```
-### size_t형
+>### size_t형
 * unsigned int와 같다
 * typedef unsigned int size_t;가 풀네임이다
 * size_t는 32비트 운영체제에서 "부호 없는 32비트 정수", 64비트 운영체제에서 "부호없는 64비트 정수"다
 * unsigned int는 64비트 운영체제에서 여전히 32비트 일 수 있다
 * 메모리나 문자열 등의 길이를 구할 때에는 size_t형으로 반환된다
+
+>### 스택
+* 한 쪽 끝에서만 원소를 넣고 뺄 수 있는 자료구조.
+* 프링글스 통 같음(FILO)
+* 제일 상단이 아닌 나머지 원소들의 확인/변경이 원칙적으로 불가능
+* 원소의 추가/제거, 제일 상단 원소 확인만 가능
+* STL stack
+  ```cpp
+  #include <bits/stdc++.h>
+  using namespace std;
+
+  int main(void) {
+  stack<int> S;
+  S.push(10); // 10
+  S.push(20); // 10 20
+  S.push(30); // 10 20 30
+  cout << S.size() << '\n'; // 3
+  if(S.empty()) cout << "S is empty\n";
+  else cout << "S is not empty\n"; // S is not empty
+  S.pop(); // 10 20
+  cout << S.top() << '\n'; // 20
+  S.pop(); // 10
+  cout << S.top() << '\n'; // 10
+  S.pop(); // empty
+  if(S.empty()) cout << "S is empty\n"; // S is empty
+  cout << S.top() << '\n'; // runtime error 발생
+  // 스택이 비어있는데 top, pop 호출하면 runtime error 발생
+  }
+  ```
 
 <br/><br>
 

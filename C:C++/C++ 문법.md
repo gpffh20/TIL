@@ -147,7 +147,7 @@ else
 
 >### 스택
 * 한 쪽 끝에서만 원소를 넣고 뺄 수 있는 자료구조.
-* 프링글스 통 같음(FILO)
+* 프링글스 통 같음(LIFO)
 * 제일 상단이 아닌 나머지 원소들의 확인/변경이 원칙적으로 불가능
 * 원소의 추가/제거, 제일 상단 원소 확인만 가능
 * STL stack
@@ -171,6 +171,36 @@ else
   if(S.empty()) cout << "S is empty\n"; // S is empty
   cout << S.top() << '\n'; // runtime error 발생
   // 스택이 비어있는데 top, pop 호출하면 runtime error 발생
+  }
+  ```
+  >### pair
+  * 한 번에 두개의 자료형을 갖는 클래스
+  * 헤더파일 #include <utility>
+  * .first, .second 로 구분
+  ```cpp
+  // pair 사용했던 문제 예시
+  #include <bits/stdc++.h>
+  using namespace std;
+
+  int main()
+  {
+      ios::sync_with_stdio(0);
+      cin.tie(0);
+
+      int n, height;
+      stack <pair<int, int>> top;
+      string ans;
+      cin >> n;
+      top.push({0, 100000001});    // 0출력 할 때 예외처리를 미리해줌
+    
+      for(int i = 1; i <= n; i++)
+      {
+          cin >> height;
+          while(top.top().second < height)
+              top.pop();
+          cout << top.top().first << " ";
+          top.push({i, height});
+      }
   }
   ```
 

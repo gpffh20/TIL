@@ -204,6 +204,33 @@ else
   }
   ```
 
+  >### 큐
+  * 한 쪽 끝에서 자료를 넣고, 반대쪽 끝에서 자료를 뺄 수 있는 구조(FIFO)
+  * 원소가 추가되는 곳: rear
+  * 원소가 제거되는 곳: front
+  * 인덱스로 내부 원소에 접근 불가
+  ```cpp
+  // SQL queue 이용
+  #include <bits/stdc++.h>
+  using namespace std;
+
+  int main(void) {
+    queue<int> Q;
+    Q.push(10); // 10
+    Q.push(20); // 10 20
+    Q.push(30); // 10 20 30
+    cout << Q.size() << '\n'; // 3
+    if(Q.empty()) cout << "Q is empty\n";
+    else cout << "Q is not empty\n"; // Q is not empty
+    Q.pop(); // 20 30
+    cout << Q.front() << '\n'; // 20
+    cout << Q.back() << '\n'; // 30
+    Q.push(40); // 20 30 40
+    Q.pop(); // 30 40
+    cout << Q.front() << '\n'; // 30
+  }
+  ```
+
 <br/><br>
 
 >## 함수

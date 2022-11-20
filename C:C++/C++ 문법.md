@@ -229,7 +229,72 @@ else
     Q.pop(); // 30 40
     cout << Q.front() << '\n'; // 30
   }
+  // 큐가 비어있는데 front, back, pop을 호출하면 런타임 에러남
   ```
+
+>### 덱
+* 양쪽 끝에서 삽입과 삭제가 전부 가능
+* STL deque에서는 인덱스로 원소에 접근 가능
+```cpp
+// 배열을 이용한 구현
+#include <bits/stdc++.h>
+using namespace std;
+
+const int MX = 1000005;
+int dat[2 * MX + 1];  // 양쪽으로 확장해야하기 때문에 초기값이 중간이어야함
+int head = MX, tail = MX;
+
+void push_front(int x)
+  dat[--head] = x;
+
+void push_back(int x)
+  dat[tail++] = x;
+
+void pop_front()
+  head++;
+
+void pop_back()
+  tail++;
+
+int front()
+  return dat[head];
+
+int back()
+  return dat[tail - 1];
+```
+<br/>
+
+```cpp
+// STL deque 이용, vector와 비슷한 면이 있지만 메모리상 구조가 다름
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(void){
+  deque<int> DQ;
+  DQ.push_front(10); // 10
+  DQ.push_back(50); // 10 50
+  DQ.push_front(24); // 24 10 50
+  for(auto x : DQ)cout<<x;
+  cout << DQ.size() << '\n'; // 3
+  if(DQ.empty()) cout << "DQ is empty\n";
+  else cout << "DQ is not empty\n"; // DQ is not empty
+  DQ.pop_front(); // 10 50
+  DQ.pop_back(); // 10
+  cout << DQ.back() << '\n'; // 10
+  DQ.push_back(72); // 10 72
+  cout << DQ.front() << '\n'; // 10
+  DQ.push_back(12); // 10 72 12
+  DQ[2] = 17; // 10 72 17
+  DQ.insert(DQ.begin()+1, 33); // 10 33 72 17
+  DQ.insert(DQ.begin()+4, 60); // 10 33 72 17 60
+  for(auto x : DQ) cout << x << ' ';
+  cout << '\n';
+  DQ.erase(DQ.begin()+3); // 10 33 72 60
+  cout << DQ[3] << '\n'; // 60
+  DQ.clear(); // DQ의 모든 원소 제거
+  DQ.at(2) // 인덱스가 2인 원소
+}
+```
 
 <br/><br>
 
@@ -328,4 +393,13 @@ abs(-100);
 int num1, num2;
 scanf("%d", "%d", &num1, &num2);
 printf("%d, "%d", num1, num2);
+```
+
+### find
+* find(객체 시작, 객체 끝, 찾을 데이터);
+* 입력한 데이터와 일치하는 원소의 반복자를 내놓음
+```cpp
+list<int> L;
+find(L.begin(), L.end(), 3);
+// 리스트 안에서 3의 반복자를 출력
 ```

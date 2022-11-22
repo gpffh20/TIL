@@ -403,3 +403,10 @@ list<int> L;
 find(L.begin(), L.end(), 3);
 // 리스트 안에서 3의 반복자를 출력
 ```
+
+### atoi
+* 문자열을 정수로 변환
+```cpp
+string num = "2019"
+num = atoi(num); // "2019"가 2019로 변환 됨
+```

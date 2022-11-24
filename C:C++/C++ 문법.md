@@ -405,8 +405,12 @@ find(L.begin(), L.end(), 3);
 ```
 
 ### atoi
-* 문자열을 정수로 변환
+* char를 정수로 변환
 ```cpp
 string num = "2019"
 num = atoi(num); // "2019"가 2019로 변환 됨
 ```
+
+### stoi
+* string을 정수로 변환
+* atoi(num.c_str()); 와 동일

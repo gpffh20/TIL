@@ -69,14 +69,6 @@ for (auto& v : arr
 * .begin() : 순차열의 시작
 * .end() : 순차열의 끝
 
->### 공백이 포함 된 문자열 출력
-* getline 함수 이용
-    * c++ string 형태의 자료에만 사용가능
-    ```cpp
-    string s;
-    getline(cin, s);
-    cout << s;
-    ```
 >### 네임스페이스
 * C++에서는 변수, 함수, 구조체, 클래스 등을 서로 구분하기 위해서 이름으로 사용되는 다양한 내부 식별자(identifier)를 가지고 있다. 하지만 프로그램이 커지면 내부 식별자 간에 충돌할 수 있다. 이러한 이름 충돌 문제를 C++에서는 네임스페이스(namespace)를 통해 해결하고 있다.
 
@@ -414,3 +406,29 @@ num = atoi(num); // "2019"가 2019로 변환 됨
 ### stoi
 * string을 정수로 변환
 * atoi(num.c_str()); 와 동일
+
+### getline()
+* istream의 cin.getline()
+  * 문자 배열이며 마지막 글자가 ‘\0’(terminator)인 c-string을 입력 받는데 사용
+  * n-1개의 문자 개수만큼 읽어와 str에 저장 (n번째 문자는 NULL(‘\0’)로 바꾼다.)
+  * 세 번째 인자인 delim은 별도로 지정해주지 않으면 엔터(‘\n’)로 인식
+  * delim을 지정해주면 그 제한자(delim)문자 직전까지 읽어서 str에 저장
+  ```cpp
+  cin.getline(변수 주소, 최대 입력 가능 문자수);
+  cin.getline(변수 주소, 최대 입력 가능 문자수, 종결 문자);
+  ```
+* string의 getline()
+  * 최대 문자 수를 입력하지 않아도 됨.
+  * 원하는 구분자(delimiter)를 만날 때 까지 모든 문자열을 입력 받아 하나의 string 객체에 저장
+  ```cpp
+  getline(입력스트림 오브젝트, 문자열을 저장할 string 객체);
+  getline(입력스트림 오브젝트, 문자열을 저장할 string객체, 종결 문자);
+  ex) getline(cin, str);
+  ```
+* 공백이 포함 된 문자열 출력
+  * c++ string 형태의 자료에만 사용가능
+  ```cpp
+  string s;
+  getline(cin, s);
+  cout << s;
+  ```

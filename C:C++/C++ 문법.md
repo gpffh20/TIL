@@ -7,7 +7,8 @@
 * 함수의 인자로 사용할 시 복사본을 이용하는 개념이기 때문에 원본에 영향 주지 않는다.
 
 ```cpp
-#include <bits/stdc++.h>
+#include <vector>
+#include <iostream>
 using namespace std;
 
 int main(void) {
@@ -100,7 +101,8 @@ struct Employee   // Employee라는 구조체 형성
 ```
 >### STL List
 ```cpp
-#include <bits/stdc++.h>
+#include <list>
+#include <iostream>
 using namespace std;
 
 int main(void)
@@ -144,7 +146,8 @@ else
 * 원소의 추가/제거, 제일 상단 원소 확인만 가능
 * STL stack
   ```cpp
-  #include <bits/stdc++.h>
+  #include <stack>
+  #include <iostream>
   using namespace std;
 
   int main(void) {
@@ -169,32 +172,46 @@ else
   * 한 번에 두개의 자료형을 갖는 클래스
   * 헤더파일 #include <utility>
   * .first, .second 로 구분
-  ```cpp
-  // pair 사용했던 문제 예시
-  #include <bits/stdc++.h>
-  using namespace std;
+    ```cpp
+    #include <utility>
+    #include <iostream>
+    using namespace std;
 
-  int main()
-  {
-      ios::sync_with_stdio(0);
-      cin.tie(0);
+    int main(void){
+      pair<int,int> t1 = make_pair(10, 13); // C++11이전
+      pair<int,int> t2 = {4, 6}; // C++11 이상
+      cout << t2.first << ' ' << t2.second << '\n'; // 4 6
+      if(t2 < t1) cout << "t2 < t1"; // t2 < t1
+    }
+    ```
+  * pair 사용했던 문제 예시
+    ```cpp
+    // pair 사용했던 문제 예시
+    #include <utility>
+    #include <iostream>
+    using namespace std;
 
-      int n, height;
-      stack <pair<int, int>> top;
-      string ans;
-      cin >> n;
-      top.push({0, 100000001});    // 0출력 할 때 예외처리를 미리해줌
-    
-      for(int i = 1; i <= n; i++)
-      {
-          cin >> height;
-          while(top.top().second < height)
-              top.pop();
-          cout << top.top().first << " ";
-          top.push({i, height});
-      }
-  }
-  ```
+    int main()
+    {
+        ios::sync_with_stdio(0);
+        cin.tie(0);
+
+        int n, height;
+        stack <pair<int, int>> top;
+        string ans;
+        cin >> n;
+        top.push({0, 100000001});    // 0출력 할 때 예외처리를 미리해줌
+      
+        for(int i = 1; i <= n; i++)
+        {
+            cin >> height;
+            while(top.top().second < height)
+                top.pop();
+            cout << top.top().first << " ";
+            top.push({i, height});
+        }
+    }
+    ```
 
   >### 큐
   * 한 쪽 끝에서 자료를 넣고, 반대쪽 끝에서 자료를 뺄 수 있는 구조(FIFO)
@@ -203,7 +220,8 @@ else
   * 인덱스로 내부 원소에 접근 불가
   ```cpp
   // SQL queue 이용
-  #include <bits/stdc++.h>
+  #include <queue>
+  #include <iostream>
   using namespace std;
 
   int main(void) {
@@ -229,7 +247,8 @@ else
 * STL deque에서는 인덱스로 원소에 접근 가능
 ```cpp
 // 배열을 이용한 구현
-#include <bits/stdc++.h>
+#include <deque>
+#include <iostream>
 using namespace std;
 
 const int MX = 1000005;
@@ -258,7 +277,8 @@ int back()
 
 ```cpp
 // STL deque 이용, vector와 비슷한 면이 있지만 메모리상 구조가 다름
-#include <bits/stdc++.h>
+#include <deque>
+#include <iostream>
 using namespace std;
 
 int main(void){
@@ -320,11 +340,11 @@ for(int i = 0; i < 21; i++)
 
 ### -cin/cout
 * 사용 방법
-    ```cpp
-    #include <iostream>
-    cout << "Hello";
-    cin >> num;
-    ```
+  ```cpp
+  #include <iostream>
+  cout << "Hello";
+  cin >> num;
+  ```
 * 주의할 점
   * 시간초과 막아야함
     * C stream과 C++ stream은 동기화 되어있다. 따라서 scanf/printf와 cin/cout을 같이 쓴다면 동기화가 되어야하지만 하나만 쓴다면 굳이 동기화를 시켜 시간을 오래걸리게 할 필요가 없다.

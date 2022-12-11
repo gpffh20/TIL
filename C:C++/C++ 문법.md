@@ -307,6 +307,21 @@ int main(void){
   DQ.at(2) // 인덱스가 2인 원소
 }
 ```
+>### tuple
+- tuple은 get을 통해 인덱스로 불러냄
+```cpp
+#include <iostream>
+tuple<int, strint, int> t1(21, "nov", 2);
+cout << get<0>(t1); // 21
+```
+
+>### const
+- 값을 상수로 선언할 수 있도록 도와주는 키워드
+- 매크로와 비슷
+```cpp
+const int a = 10;
+a = 20; //error
+```
 
 <br/><br>
 
